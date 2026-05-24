@@ -26,11 +26,12 @@ namespace SmartHome.Application.Readings.CommandHandler
                 .OrderByDescending(r => r.ReadingDate)
                 .FirstOrDefaultAsync(cancellationToken);
 
-            if (previousReading != null && request.DayReading<previousReading.DayReading) {
+            if (previousReading != null && request.DayReading < previousReading.DayReading)
+            {
                 throw new Exception("Day reading cannot be less than previous reading");
             }
 
-            if(request.ReadingDate>DateOnly.FromDateTime(DateTime.Today))
+            if (request.ReadingDate > DateOnly.FromDateTime(DateTime.Today))
             {
                 throw new Exception("Reading date cannot be in the future");
             }
