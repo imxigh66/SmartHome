@@ -44,5 +44,20 @@ namespace SmartHome.API.Controllers
                 return BadRequest(new { message = ex.Message });
             }
         }
+
+        [HttpPost("refresh")]
+        public async Task<IActionResult> Refresh(
+    [FromBody] RefreshTokenCommand command)
+        {
+            try
+            {
+                var result = await _mediator.Send(command);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
+        }
     }
 }

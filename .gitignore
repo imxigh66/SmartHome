@@ -430,3 +430,5 @@ FodyWeavers.xsd
 SmartHome.API/obj
 SmartHome.Infrastructure/obj
 .vs
+SmartHome.Application/obj
+SmartHome.Domain/obj
