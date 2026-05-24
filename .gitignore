@@ -429,3 +429,4 @@ FodyWeavers.xsd
 *.msp
 SmartHome.API/obj
 SmartHome.Infrastructure/obj
+.vs
