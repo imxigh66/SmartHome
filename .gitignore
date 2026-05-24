@@ -432,3 +432,4 @@ SmartHome.Infrastructure/obj
 .vs
 SmartHome.Application/obj
 SmartHome.Domain/obj
+SmartHome.API/bin
