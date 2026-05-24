@@ -79,6 +79,7 @@ namespace SmartHome.Application.Readings.CommandHandler
                         DayAmount = billing.DayAmount,
                         NightAmount = billing.NightAmount,
                         TotalAmount = billing.TotalAmount,
+                        Recommendation = billing.Recommendation,
                         TariffSnapshot =
                             $"{tariff.Provider}|{tariff.PlanType}|" +
                             $"{tariff.SingleRate}|{tariff.DayRate}|" +

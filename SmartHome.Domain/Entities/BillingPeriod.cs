@@ -33,6 +33,7 @@ namespace SmartHome.Domain.Entities
 
         // Snapshot тарифа на момент расчёта
         public string TariffSnapshot { get; set; } = string.Empty;
+        public string? Recommendation { get; set; }
 
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
