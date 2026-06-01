@@ -430,9 +430,8 @@ FodyWeavers.xsd
 SmartHome.API/obj
 SmartHome.Infrastructure/obj
 .vs
-*.db
-/.vs/SmartHome/CopilotIndices/17.13.433.20974/CodeChunks.db
-/.vs/SmartHome/CopilotIndices/17.13.433.20974/SemanticSymbols.db
-SmartHome.Domain/obj
 SmartHome.Application/obj
+SmartHome.Domain/obj
+SmartHome.API/bin
 .vs
+***/obj/
