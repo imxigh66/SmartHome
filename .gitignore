@@ -433,3 +433,5 @@ SmartHome.Infrastructure/obj
 SmartHome.Application/obj
 SmartHome.Domain/obj
 SmartHome.API/bin
+.vs
+***/obj/
