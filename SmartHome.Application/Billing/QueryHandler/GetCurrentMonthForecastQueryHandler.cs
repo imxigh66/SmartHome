@@ -31,7 +31,7 @@ namespace SmartHome.Application.Billing.QueryHandler
             // Берём периоды текущего месяца
             var periods = await _context.BillingPeriods
                 .Where(b => b.UserId == request.UserId &&
-                            b.PeriodEnd >= firstDay &&
+                            b.PeriodStart >= firstDay &&
                             b.PeriodEnd <= today)
                 .ToListAsync(cancellationToken);
 

@@ -14,8 +14,7 @@ namespace SmartHome.Application.Auth.Commands
  ) : IRequest<RegisterUserResult>;
 
     public record RegisterUserResult(
-    Guid UserId,
     string Email,
-    string Name
+    string Error
 );
 }

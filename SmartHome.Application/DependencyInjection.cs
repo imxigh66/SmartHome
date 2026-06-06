@@ -1,9 +1,8 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using FluentValidation;
+using MediatR;
+using Microsoft.Extensions.DependencyInjection;
+using SmartHome.Application.Common.Behaviors;
+
 
 namespace SmartHome.Application
 {
@@ -12,11 +11,19 @@ namespace SmartHome.Application
         public static IServiceCollection AddApplication(
             this IServiceCollection services)
         {
-            services.AddMediatR(cfg =>
-                cfg.RegisterServicesFromAssembly(
-                    typeof(DependencyInjection).Assembly));
+			services.AddMediatR(cfg =>
+			{
+				cfg.RegisterServicesFromAssembly(
+					typeof(DependencyInjection).Assembly);
+				cfg.AddBehavior(
+					typeof(IPipelineBehavior<,>),
+					typeof(ValidationBehavior<,>));
+			});
 
-            return services;
+			services.AddValidatorsFromAssembly(
+				typeof(DependencyInjection).Assembly);
+
+			return services;
         }
     }
 }

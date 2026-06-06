@@ -51,7 +51,7 @@ namespace SmartHome.Application.Dashboard.QueryHandler
             // Периоды текущего месяца
             var monthPeriods = await _context.BillingPeriods
                 .Where(b => b.UserId == request.UserId &&
-                            b.PeriodEnd >= firstDay)
+                            b.PeriodStart >= firstDay)
                 .ToListAsync(cancellationToken);
 
             var monthAmount = monthPeriods.Sum(p => p.TotalAmount);

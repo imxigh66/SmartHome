@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using SmartHome.Application.Auth.Commands;
+using FluentValidation;
 
 namespace SmartHome.API.Controllers
 {
@@ -15,22 +16,31 @@ namespace SmartHome.API.Controllers
             _mediator = mediator;
         }
 
-        [HttpPost("register")]
-        public async Task<IActionResult> Register(
-            [FromBody] RegisterUserCommand command)
-        {
-            try
-            {
-                var result = await _mediator.Send(command);
-                return Ok(result);
-            }
-            catch (InvalidOperationException ex)
-            {
-                return BadRequest(new { message = ex.Message });
-            }
-        }
+		[HttpPost("register")]
+		public async Task<IActionResult> Register(
+			[FromBody] RegisterUserCommand command)
+		{
+			try
+			{
+				var result = await _mediator.Send(command);
+				return Ok(result);
+			}
+			catch (ValidationException ex)
+			{
+				var errors = ex.Errors
+					.Select(e => new {
+						field = e.PropertyName,
+						message = e.ErrorMessage
+					});
+				return BadRequest(new { errors });
+			}
+			catch (Exception ex)
+			{
+				return BadRequest(new { message = ex.Message });
+			}
+		}
 
-        [HttpPost("login")]
+		[HttpPost("login")]
         public async Task<IActionResult> Login(
             [FromBody] LoginUserCommand command)
         {

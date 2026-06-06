@@ -7,9 +7,13 @@ using System.Text;
 
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddCors();
 // Application + Infrastructure
 builder.Services.AddApplication();
 builder.Services.AddInfrastructure(builder.Configuration);
+
+
 
 // JWT Auth
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -76,4 +80,10 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.Run();
+app.UseCors(builder => builder
+	.AllowAnyOrigin()
+	.AllowAnyMethod()
+	.AllowAnyHeader()
+);
+
+app.Run("http://0.0.0.0:5030");
